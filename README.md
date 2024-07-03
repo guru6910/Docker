@@ -187,11 +187,11 @@ docker stop <container_id>
 ````
 docker start <container_id>
 ````
-14. Stop all Running Containers
+13. Stop all Running Containers
 ````
 docker stop $(docker ps -qa)
 ````
-15. Remove all running and stoppd containers
+14. Remove all running and stoppd containers
 ````
 docker stop $(docker ps -a -q)
 ````
