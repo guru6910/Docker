@@ -155,7 +155,47 @@ docker run -itd -p 80:80 <image_name>
 ````
 docker ps
 ````
-5. Log In Into Conatainer
+5. List all stopped and Running Containers.
+````
+docker ps -a
+````
+6. Log In Into Conatainer
 ````
 docker exec -it <container id> /bin/bash
+````
+7. Remove image
+````
+docker rmi <package_name>
+````
+8. Remove Container
+````
+docker rm <container_id>
+````
+9. Show the datail of Container
+````
+docker inspect <container_id>
+````
+10. Show logs of Container.
+````
+docker logs <container_id>
+````
+11. Stop Container
+````
+docker stop <container_id>
+````
+12. Start Container
+````
+docker start <container_id>
+````
+14. Stop all Running Containers
+````
+docker stop $(docker ps -qa)
+````
+15. Remove all running and stoppd containers
+````
+docker stop $(docker ps -a -q)
+````
+15. Remove all Stoppd containers
+````
+docker container prune
 ````
