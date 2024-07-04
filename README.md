@@ -123,7 +123,7 @@ ${\color{lightblue}  \textbf{Docker}}$
 
 
 
-##  ${\color{lightblue} \textbf{Installation-Steps  \ (Amazon-Linux)}}$ 
+#  ${\color{lightblue} \textbf{Installation-Steps  \ (Amazon-Linux)}}$ 
 
 
 ````
@@ -136,7 +136,7 @@ sudo usermod -a -G docker ec2-user
 docker --version
 ````
 
-# HTTPD Image From dockerhub
+## HTTPD Image From dockerhub
 
 ````
 docker pull httpd
@@ -146,7 +146,7 @@ docker ps
 ````
 
 
-# NGINX Image From dockerhub
+## NGINX Image From dockerhub
 
 ````
 docker pull nginx
@@ -156,7 +156,7 @@ docker ps
 ````
 
 
-# TOMCAT Image From dockerhub 
+## TOMCAT Image From dockerhub 
 
 ````
 docker pull tomcat 
@@ -169,7 +169,7 @@ cp -r * /usr/local/tomcat/webapps/
 ````
 
 
-# Build a image and run using "Dockerfile"
+## Build a image and run using "Dockerfile"
 
 # HTTPD 
 ````
@@ -184,7 +184,7 @@ docker run -itd --name httpd-server -p 81:80 httpd
 docker ps 
 ````
 
-# NGINX
+## NGINX
 
 ````
 vim Dockerfile
@@ -204,7 +204,7 @@ docker run -itd --name nginx-server -p 81:80 nginx
 docker ps 
 ````
 
-# TOMCAT
+## TOMCAT
 ````
 vim Dockerfile
   >> 
@@ -220,15 +220,8 @@ cd /webapps.dist
 cp -r * /usr/local/tomcat/webapps/
 ````
 
+#  ${\color{lightblue} \textbf{Basic \ Docker \ Commands}}$ 
 
-
-
-
-
-
-
-
-##  ${\color{lightblue} \textbf{Basic \ Docker \ Commands}}$ 
 1. List Docker images:
 ````
    docker images
