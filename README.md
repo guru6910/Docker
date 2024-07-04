@@ -1,4 +1,4 @@
-#  $${\color{lightlightblue} \textbf{Docker 🐳}}$$
+#  $${\color{lightblue} \textbf{Docker 🐳}}$$
 
 
 ##  ${\color{lightblue} \textbf{ Monolithic \ vs \ Microservises}}$
