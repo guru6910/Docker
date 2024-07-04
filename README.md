@@ -267,7 +267,7 @@ cd /webapps.dist
 cp -r * /usr/local/tomcat/webapps/
 ````
 
-#  ${\color{lightblue} \textbf{Basic \ Docker \ Commands}}$ 
+#  ${\color{green} \textbf{Basic \ Docker \ Commands}}$ 
 
 1. List Docker images:
 ````
