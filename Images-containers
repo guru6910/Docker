@@ -43,6 +43,20 @@ cp -r * /usr/local/tomcat/webapps/
 
 # Build a image and run using "Dockerfile"
 
+# HTTPD 
+
+vim Dockerfile
+
+  >> FROM httpd:latest
+   <<
+
+docker images
+docker build -t httpd
+docker run -itd --name httpd-server -p 81:80 httpd
+docker ps 
+
+
+
 # NGINX
 
 \\
