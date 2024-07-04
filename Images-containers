@@ -63,5 +63,20 @@ docker run -itd --name nginx-server -p 81:80 nginx
 docker ps 
 \\
 
+# TOMCAT
 
+\\
+vim Dockerfile
+  >> 
+   FROM tomcat:latest
+   LABEL maintainer="your-email@example.com"
+   CMD ["catalina.sh", "run"]
+  >>
+docker images
+docker run -itd --name tomcat-server -p 83:8080 tomcat
+docker ps 
+docker exec -it <container_id> /bin/bash
+cd /webapps.dist
+cp -r * /usr/local/tomcat/webapps/
+\\
 
