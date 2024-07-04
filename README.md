@@ -289,3 +289,11 @@ docker stop $(docker ps -a -q)
 ````
 docker container prune
 ````
+16. Build a image using Dockerfile
+````
+docker build -t <image_name>
+````
+17. Direct log in container working directory which we added in dockerfile.
+````
+docker run -it <image_name>
+````
