@@ -123,7 +123,7 @@ ${\color{lightblue}  \textbf{Docker}}$
 
 
 
-#  ${\color{lightblue} \textbf{Installation-Steps  \ (Amazon-Linux)}}$ 
+#  ${\color{red} \textbf{Installation-Steps  \ (Amazon-Linux)}}$ 
 
 
 ````
@@ -136,7 +136,7 @@ sudo usermod -a -G docker ec2-user
 docker --version
 ````
 
-## HTTPD Image From dockerhub
+## ${\color{red} \textbf{HTTPD Image From dockerhub}}$ 
 
 ````
 docker pull httpd
