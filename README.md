@@ -146,7 +146,7 @@ docker ps
 ````
 
 
-## NGINX Image From dockerhub
+## ${\color{red} \textbf{NGINX Image From dockerhub}}$ 
 
 ````
 docker pull nginx
@@ -161,7 +161,7 @@ docker run -itd --name nginx-server -p 82:80 nginx
 docker ps 
 ````
 
-## TOMCAT Image From dockerhub 
+## ${\color{red} \textbf{TOMCAT Image From dockerhub}}$  
 
 ````
 docker pull tomcat
@@ -186,9 +186,9 @@ cp -r * /usr/local/tomcat/webapps/
 ````
 
 
-## Build a image and run using "Dockerfile"
+## ${\color{green} \textbf{Build a image and run using "Dockerfile"}}$  
 
-# HTTPD 
+## ${\color{red} \textbf{HTTPD}}$  
 ````
 vim Dockerfile
 ````
@@ -209,7 +209,7 @@ docker run -itd --name httpd-server -p 81:80 httpd
 docker ps 
 ````
 
-## NGINX
+## ${\color{red} \textbf{NGINX}}$ 
 
 ````
 vim Dockerfile
@@ -237,7 +237,7 @@ docker run -itd --name nginx-server -p 81:80 nginx
 docker ps 
 ````
 
-## TOMCAT
+## ${\color{red} \textbf{TOMCAT}}$ 
 ````
 vim Dockerfile
 ````
