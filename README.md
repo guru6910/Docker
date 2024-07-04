@@ -150,21 +150,38 @@ docker ps
 
 ````
 docker pull nginx
+````
+````
 docker images
+````
+````
 docker run -itd --name nginx-server -p 82:80 nginx
+````
+````
 docker ps 
 ````
-
 
 ## TOMCAT Image From dockerhub 
 
 ````
-docker pull tomcat 
+docker pull tomcat
+````
+````
 docker images
+````
+````
 docker run -itd --name tomcat-server -p 83:8080 tomcat
+````
+````
 docker ps 
+````
+````
 docker exec -it <container_id> /bin/bash
+````
+````
 cd /webapps.dist
+````
+````
 cp -r * /usr/local/tomcat/webapps/
 ````
 
@@ -174,13 +191,21 @@ cp -r * /usr/local/tomcat/webapps/
 # HTTPD 
 ````
 vim Dockerfile
-
+````
+````
   >> FROM httpd:latest
    <<
-
+````
+````
 docker images
+````
+````
 docker build -t httpd
+````
+````
 docker run -itd --name httpd-server -p 81:80 httpd
+````
+````
 docker ps 
 ````
 
@@ -188,7 +213,8 @@ docker ps
 
 ````
 vim Dockerfile
-
+````
+````
   >> FROM ubuntu:20.04
   WORKDIR Guru
   RUN apt update -y && \
@@ -197,26 +223,47 @@ vim Dockerfile
   COPY index.html /var/www/html/
   CMD ["nginx","-g","daemon off;"]  
   <<
-
+````
+````
 echo "HELLO GURU" > index.html
+````
+````
 docker build -t nginx .
+````
+````
 docker run -itd --name nginx-server -p 81:80 nginx
+````
+````
 docker ps 
 ````
 
 ## TOMCAT
 ````
 vim Dockerfile
+````
+````
   >> 
    FROM tomcat:latest
    LABEL maintainer="your-email@example.com"
    CMD ["catalina.sh", "run"]
   >>
+````
+````
 docker images
+````
+````
 docker run -itd --name tomcat-server -p 83:8080 tomcat
+````
+````
 docker ps 
+````
+````
 docker exec -it <container_id> /bin/bash
+````
+````
 cd /webapps.dist
+````
+````
 cp -r * /usr/local/tomcat/webapps/
 ````
 
