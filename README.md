@@ -357,3 +357,33 @@ docker build -t <image_name>
 ````
 docker run -it <image_name>
 ````
+18. log in dockerhub in instance.
+````
+docker login
+````
+19. give tag to image for ppush on dockerhub
+````
+docker tag <image_name> guru6910/<image:tag>
+````
+20. push on dockerhub
+````
+docker push guru6910/<image:tag>
+````
+21. Remove all Images at once
+````
+docker rmi -f $(docker images)
+````
+22. List of Network.
+````
+docker network ls
+````
+23. Create Network
+````
+docker network create <network_name>
+````
+NOTE : Default Network type is bridge.
+
+24. give Network type to network.
+````
+docker network create --driver <network_type> <Network_name>
+````
