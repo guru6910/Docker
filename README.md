@@ -387,3 +387,8 @@ NOTE : Default Network type is bridge.
 ````
 docker network create --driver <network_type> <Network_name>
 ````
+25. Create container with Network & give name to container.
+````
+docker run -itd --network <network_name> --name <container_name> <image>
+````
+26. 
