@@ -105,4 +105,8 @@ cp -r * /usr/local/tomcat/webapps/
 6. docker exec -it cont-1 -> log in to the cont-1
 7. apt update -y 
 8. apt install iputils-ping -> install iputils-ping for communication
-9. ping cont-2 
+9. ping cont-2  -> ping and exit from cont-1
+10. docker exec -it cont-2 -> log in to the cont-2
+11. apt update -y 
+12. apt install iputils-ping -> install iputils-ping for communication
+13. ping cont-1
