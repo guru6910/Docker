@@ -417,6 +417,8 @@ docker push guru6910/<image:tag>
 ````
 docker rmi -f $(docker images)
 ````
+
+## ${\color{red} \textbf{Docker Network}}$
 22. List of Network.
 ````
 docker network ls
@@ -435,4 +437,7 @@ docker network create --driver <network_type> <Network_name>
 ````
 docker run -itd --network <network_name> --name <container_name> <image>
 ````
-26. 
+26. Delete Network.
+````
+docker network rm <network_id>
+````
