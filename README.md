@@ -1,4 +1,4 @@
-#  $${\color{lightblue} \textbf{Docker 🐳}}$$
+#  $${\color{sky} \textbf{Docker 🐳}}$$
 
 # What is docker ?
 
