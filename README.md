@@ -441,3 +441,19 @@ docker run -itd --network <network_name> --name <container_name> <image>
 ````
 docker network rm <network_id>
 ````
+27. Create a volume.
+````
+docker volume create <volume_name>
+````
+28. list of docker volume
+````
+docker volume ls
+````
+29. Create container with volume with mount app in container.
+````
+docker run -itd --name <cont_name> --mount source=ebs,target=/app <image>
+````
+30. list of container whicch allowcated with particular volume.
+````
+docker ps --filter volume=<volume_name>
+````
