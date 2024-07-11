@@ -1,36 +1,32 @@
-# Install Docker 
-
-\\
+### Install Docker 
+````
 sudo yum update -y
 sudo yum install -y docker
 sudo service docker start
 sudo usermod -a -G docker ec2-user
-\\
+````
 
 
-# HTTPD Image From dockerhub
-
-\\
+### HTTPD Image From dockerhub
+````
 docker pull httpd
 docker images
 docker run -itd --name httpd-server -p 81:80 httpd
 docker ps 
-\\
+````
 
 
-# NGINX Image From dockerhub
-
-\\
+### NGINX Image From dockerhub
+````
 docker pull nginx
 docker images
 docker run -itd --name nginx-server -p 82:80 nginx
 docker ps 
-\\
+````
 
 
-# TOMCAT Image From dockerhub 
-
-\\
+### TOMCAT Image From dockerhub 
+````
 docker pull tomcat 
 docker images
 docker run -itd --name tomcat-server -p 83:8080 tomcat
@@ -38,62 +34,65 @@ docker ps
 docker exec -it <container_id> /bin/bash
 cd /webapps.dist
 cp -r * /usr/local/tomcat/webapps/
-\\
+````
 
 
-# Build a image and run using "Dockerfile"
+## Build a image and run using "Dockerfile"
 
-# HTTPD 
-
+### HTTPD 
+````
 vim Dockerfile
-
-  >> FROM httpd:latest
-   <<
-
+````
+````
+ FROM httpd:latest
+````
+````
 docker images
 docker build -t httpd
 docker run -itd --name httpd-server -p 81:80 httpd
 docker ps 
+````
 
 
-
-# NGINX
-
-\\
+### NGINX
+````
 vim Dockerfile
-
-  >> FROM ubuntu:20.04
+````
+````
+FROM ubuntu:20.04
+````
+````
   WORKDIR Guru
   RUN apt update -y && \
       apt install nginx -y
 
   COPY index.html /var/www/html/
   CMD ["nginx","-g","daemon off;"]  
-  <<
-
+````
+````
 echo "HELLO GURU" > index.html
 docker build -t nginx .
 docker run -itd --name nginx-server -p 81:80 nginx
 docker ps 
-\\
+````
 
-# TOMCAT
-
-\\
+### TOMCAT
+````
 vim Dockerfile
-  >> 
+````
+````
    FROM tomcat:latest
    LABEL maintainer="your-email@example.com"
    CMD ["catalina.sh", "run"]
-  >>
+````
+````
 docker images
 docker run -itd --name tomcat-server -p 83:8080 tomcat
 docker ps 
 docker exec -it <container_id> /bin/bash
 cd /webapps.dist
 cp -r * /usr/local/tomcat/webapps/
-\\
-
+````
 
 ## COMMUNICATE BETWEEN TWO CONTAINER USING BRIDGE NETWORK ##
 
