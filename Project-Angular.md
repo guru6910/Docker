@@ -12,7 +12,7 @@ COPY springbackend.sql /docker-entrypoint-initdb.d/
 
 EXPOSE 3306
 ````
-### ${color{green} \textbf{springbackend.sql}}$
+### ${\color{green} \textbf{springbackend.sql}}$
 ````
 -- phpMyAdmin SQL Dump
 -- version 5.1.1
