@@ -12,79 +12,28 @@ COPY springbackend.sql /docker-entrypoint-initdb.d/
 
 EXPOSE 3306
 ````
-### ${\color{green} \textbf{springbackend.sql}}$
+### ${\color{green} \textbf{init-database.sh}}$
 ````
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Oct 13, 2022 at 04:28 AM
--- Server version: 10.9.3-MariaDB
--- PHP Version: 7.4.27
+#!/bin/bash
+set -e
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+# Wait for MariaDB to start
+sleep 10
 
+# Check if the SQL file exists and is readable
+if [ ! -r /Project-Angular-App/database/springbackend.sql ]; then
+    echo "SQL file not found or not readable"
+    exit 1
+fi
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+mysql -h localhost -u root -ppasswd123 -e "CREATE DATABASE IF NOT EXISTS angularbackend;"
 
---
--- Database: `springbackend`
---
+mysql -h localhost -u admin -ppasswd123 angularbackend < /Project-Angular-App/database/springbackend.sql
 
--- --------------------------------------------------------
+mysql -h localhost -u admin -ppasswd123 -e "USE angularbackend; SHOW TABLES;"
 
---
--- Table structure for table `tbl_workers`
---
+mysql -h localhost -u admin -ppasswd123 -e "USE angularbackend; DESCRIBE tbl_workers;"
 
-CREATE TABLE `tbl_workers` (
-  `id` bigint(20) NOT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `workerfname` varchar(255) DEFAULT NULL,
-  `workerlname` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_workers`
---
-
-INSERT INTO `tbl_workers` (`id`, `status`, `workerfname`, `workerlname`) VALUES
-(1, 'Working', 'Ivan', 'Holicek'),
-(37, 'Vacation', 'Marko', 'Markovic'),
-(40, 'Working', 'Ivo', 'Ivica'),
-(41, 'Working', 'Luka', 'Lukovic'),
-(42, 'Working', 'Filip', 'Filipovic');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `tbl_workers`
---
-ALTER TABLE `tbl_workers`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbl_workers`
---
-ALTER TABLE `tbl_workers`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 ````
 
 # ${\color{red} \textbf{Backend}}$
@@ -93,32 +42,38 @@ COMMIT;
 ````
 FROM ubuntu:latest
 
-RUN apt update -y
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk maven git && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN apt install openjdk-11-jdk -y 
+# Set the working directory in the container
+WORKDIR /app
 
-RUN apt-get install maven -y 
+# Clone the project repository
+RUN git clone https://github.com/guru6910/Project-Angular-App.git
 
-RUN apt-get install git -y 
-  
-RUN git clone https://github.com/guru6910/Project-Angular-App.git 
+# Change directory to the backend project
+WORKDIR /app/Project-Angular-App/spring-backend
 
-WORKDIR /Project-Angular-App/spring-backend
-
+# Copy the application properties file (assuming you have it in the same directory as the Dockerfile)
 COPY application.properties src/main/resources/application.properties
 
-RUN mvn clean package -Dmaven.test.skip=true
+# Build the Maven project
+RUN mvn clean package -DskipTests
 
+# Expose the port the application runs on
 EXPOSE 8080
 
+# Command to run the application
 CMD ["java", "-jar", "target/spring-backend-v1.jar"]
 ````
 
 ### ${\color{green} \textbf{application.properties}}$
 ````
-spring.datasource.url=jdbc:mysql://172.17.0.2:3306/springbackend?useSSL=false
-spring.datasource.username=root
-spring.datasource.password=1234
+spring.datasource.url=jdbc:mysql://172.17.0.2:3306/angularbackend?useSSL=false
+spring.datasource.username=admin
+spring.datasource.password=passwd123
 
 spring.jpa.generate-ddl=true
 ````
