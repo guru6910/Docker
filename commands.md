@@ -124,3 +124,7 @@ docker run -itd --name <cont_name> --mount source=ebs,target=/app <image>
 ````
 docker ps --filter volume=<volume_name>
 ````
+31. Delete all the container forcefully
+````
+ docker rm -f $(docker ps -qa)
+````
