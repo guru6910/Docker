@@ -33,3 +33,22 @@ ls app
 ````
 docker run -itd --name example1 -v ${PWD}/ec2:/var/demo ubuntu
 ````
+
+
+
+## Docker Volume manage from Host 
+
+### Default Volume Location in Host :  /var/lib/docker/volumes
+
+````
+docker volume create <volume name>
+````
+````
+docker run -d -P -v volumename:/usr/share/nginx/html/ <imagename(nginx)>
+````
+````
+docker run -d -P -v /mnt/Volume:/usr/local/apache2/htdocs/  httpd  [when we change data in /mnt/Volume on host then automatically changed the data in container /usr/share/nginx/html/]
+````
+````
+/var/lib/docker/volumes/volname/_data
+````
