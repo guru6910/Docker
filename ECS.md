@@ -1,4 +1,4 @@
-# ECS
+# ECS (Elastic Container Service)
 IS a cloud based container management service that allows you to run and manage Docker container on a cluster of virtual server. 
 
 Why ECS :
